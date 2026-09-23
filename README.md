@@ -40,5 +40,4 @@ Conectar inventario y franjas horarias del operador, backend con validación de 
 ## Fuentes
 
 - https://watersportsantapola.com/ y sus fichas de reserva: servicios, condiciones y tarifas de referencia observados el 17-09-2026.
-- https://waitup.es/es: referencia de navegación, jerarquía visual y organización funcional.
 - https://maplibre.org/maplibre-gl-js/docs/examples/add-a-3d-model-using-threejs/
