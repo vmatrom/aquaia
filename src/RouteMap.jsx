@@ -4,7 +4,7 @@ import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import * as THREE from "three";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { ArrowRight, MapPin, LocateFixed, Play, Pause } from "lucide-react";
-import { activities } from "./data";
+import { routeActivities } from "./data";
 const departure = [-0.5568, 38.1852];
 maplibregl.setWorkerUrl(workerUrl);
 const routes = {
@@ -144,7 +144,7 @@ export default function RouteMap({ onBook }) {
   const [error, setError] = useState("");
   const [is3d, setIs3d] = useState(true);
   const [playing, setPlaying] = useState(false);
-  const activity = activities.find((a) => a.id === id);
+  const activity = routeActivities.find((a) => a.id === id);
   useEffect(() => {
     let m;
     try {
@@ -253,13 +253,11 @@ export default function RouteMap({ onBook }) {
   }, []);
   useEffect(() => {
     if (!ready || !map.current?.getSource("route")) return;
-    map.current
-      .getSource("route")
-      .setData({
-        type: "Feature",
-        properties: {},
-        geometry: { type: "LineString", coordinates: routes[id] },
-      });
+    map.current.getSource("route").setData({
+      type: "Feature",
+      properties: {},
+      geometry: { type: "LineString", coordinates: routes[id] },
+    });
     model.current.point = departure;
     map.current.triggerRepaint();
     setPlaying(false);
@@ -355,7 +353,7 @@ export default function RouteMap({ onBook }) {
         <aside className="route-sidebar">
           <h2>Elige tu experiencia</h2>
           <div className="route-options">
-            {activities.map((a) => (
+            {routeActivities.map((a) => (
               <button
                 key={a.id}
                 className={id === a.id ? "route-option active" : "route-option"}
@@ -363,7 +361,7 @@ export default function RouteMap({ onBook }) {
                 aria-pressed={id === a.id}
               >
                 <span>
-                  <strong>{a.place}</strong>
+                  <strong>{a.title}</strong>
                   <small>{a.minutes} minutos</small>
                 </span>
                 <span className="radio" />

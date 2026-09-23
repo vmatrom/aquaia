@@ -40,7 +40,9 @@ export function Reservations({ bookings, onExplore, onCancel }) {
                 <h3>{b.title}</h3>
                 <p>
                   {b.date} · {b.time} ·{" "}
-                  {b.group ? `${b.attendees} asistentes` : `${b.units} moto(s)`}
+                  {b.group
+                    ? `${b.attendees} asistentes`
+                    : `${b.units} unidad(es)`}
                 </p>
                 {b.notes ? <p>{b.notes}</p> : null}
                 <small>

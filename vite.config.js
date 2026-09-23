@@ -8,9 +8,9 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["icon.svg"],
       manifest: {
-        name: "AQUA · Santa Pola Jet Ski",
+        name: "AQUA · Water Sports Santa Pola",
         short_name: "AQUA",
-        description: "Experiencias y reservas de jet ski",
+        description: "Actividades acuáticas y reservas en Santa Pola",
         theme_color: "#101211",
         background_color: "#101211",
         display: "standalone",

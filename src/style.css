@@ -234,7 +234,13 @@ main {
 }
 .tabs {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 10px;
+}
+.catalog-count {
+  margin: -10px 0 18px;
+  font-size: 12px;
 }
 .tabs button {
   border: 1px solid var(--border);

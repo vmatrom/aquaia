@@ -1,4 +1,4 @@
-# AQUA · Santa Pola Jet Ski
+# AQUA · Water Sports Santa Pola
 
 PWA para clientes, con catálogo, reservas individuales, solicitudes para grupos y empresas, mapa geográfico con modelo 3D de moto y códigos promocionales. React + Vite + MapLibre + Three.js.
 
@@ -18,7 +18,7 @@ Node.js 22. Las fotografías ilustrativas están en `public/assets`. Fuentes loc
 
 Primera versión de demostración: reservas, solicitudes y códigos se guardan en localStorage del navegador. No se envían al operador ni se cobra. La administración de códigos es pública y local; no sustituye un servidor con autenticación. La disponibilidad, los horarios, el precio final y el punto de encuentro no están conectados al sistema del negocio. Los datos guardados en localhost no se transfieren al dominio desplegado.
 
-- Particulares: 4 actividades, fecha, hora orientativa, motos, datos, resumen y código.
+- Particulares: 12 experiencias de jet ski, barcos, veleros, parasailing, snorkel e hinchables; fecha, franja orientativa, participantes o unidades, datos, resumen y código.
 - Grupos / empresas: asistentes, empresa y necesidades; solicitud de presupuesto sin precio cerrado.
 - Promociones: porcentaje o euros, importe mínimo, caducidad inclusiva en Europe/Madrid, límite de usos, activación y pausa. No acumulables. Cancelar un plan no devuelve usos. Ejemplos de demo: AQUA10 y TABARCA20.
 - Mapa: puntos aproximados, rutas orientativas, vista 2D/3D, zoom, centrado y moto ampliada con recorrido animado. No sirve para navegación marítima ni determina recorridos autorizados.
@@ -39,6 +39,6 @@ Conectar inventario y franjas horarias del operador, backend con validación de 
 
 ## Fuentes
 
-- https://santapolajetski.com/ y sus fichas de actividades: tarifas desde 85 / 135 / 150 / 185 EUR observadas el 16-09-2026.
+- https://watersportsantapola.com/ y sus fichas de reserva: servicios, condiciones y tarifas de referencia observados el 17-09-2026.
 - https://waitup.es/es: referencia de navegación, jerarquía visual y organización funcional.
 - https://maplibre.org/maplibre-gl-js/docs/examples/add-a-3d-model-using-threejs/

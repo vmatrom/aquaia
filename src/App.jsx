@@ -3,7 +3,7 @@ import { Waves, Smartphone, ArrowUpRight, X } from "lucide-react";
 import Catalog from "./Catalog";
 import Booking from "./Booking";
 import Management, { Reservations } from "./Management";
-import { initialPromos, readSaved, activities } from "./data";
+import { initialPromos, readSaved } from "./data";
 const RouteMap = lazy(() => import("./RouteMap"));
 export default function App() {
   const [page, setPage] = useState("Experiencias");
@@ -83,7 +83,7 @@ export default function App() {
         >
           <Waves />
           <span>
-            AQUA<small>SANTA POLA JET SKI</small>
+            AQUA<small>WATER SPORTS SANTA POLA</small>
           </span>
         </button>
         <nav aria-label="Navegación principal">
@@ -132,7 +132,7 @@ export default function App() {
         <span>
           Precios publicados en la{" "}
           <a
-            href="https://santapolajetski.com/"
+            href="https://watersportsantapola.com/"
             target="_blank"
             rel="noreferrer"
           >
@@ -144,7 +144,7 @@ export default function App() {
           Gestionar promociones
         </button>
         <span className="footer-brand">
-          SANTA POLA JET SKI <Waves />
+          WATER SPORTS SANTA POLA <Waves />
         </span>
       </footer>
       {selected ? (

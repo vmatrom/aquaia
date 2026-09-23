@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from "react";
 import { X, ArrowRight, Check, Ticket, ArrowLeft } from "lucide-react";
-import { money, priceBooking, today } from "./data";
+import { activityTitle, money, priceBooking, today, unitPlural } from "./data";
 export default function Booking({ activity, promos, onClose, onSave }) {
   const dialog = useRef(null);
   const [step, setStep] = useState(1);
   const [date, setDate] = useState(today());
-  const [time, setTime] = useState("10:00");
-  const [units, setUnits] = useState(1);
+  const [time, setTime] = useState(activity.times?.[0] || "10:00");
+  const [units, setUnits] = useState(activity.minUnits || 1);
   const [code, setCode] = useState("");
   const [applied, setApplied] = useState("");
   const [error, setError] = useState("");
@@ -52,7 +52,7 @@ export default function Booking({ activity, promos, onClose, onSave }) {
     try {
       const row = onSave({
         activityId: activity.id,
-        title: `${activity.place} · ${activity.minutes} min`,
+        title: activityTitle(activity),
         date,
         time,
         units,
@@ -100,7 +100,7 @@ export default function Booking({ activity, promos, onClose, onSave }) {
             {saved.title}
             <br />
             {date} · {time} ·{" "}
-            {group ? `${attendees} asistentes` : `${units} moto(s)`}
+            {group ? `${attendees} asistentes` : unitPlural(activity, units)}
           </p>
           <strong className="big-price">
             {group ? "Presupuesto pendiente" : money(saved.total)}
@@ -113,9 +113,7 @@ export default function Booking({ activity, promos, onClose, onSave }) {
       ) : (
         <>
           <small className="lime">PREPARA TU ESCAPADA</small>
-          <h2>
-            {activity.place} · {activity.minutes} min
-          </h2>
+          <h2>{activityTitle(activity)}</h2>
           <div className="steps">
             {["Tu experiencia", "Tus datos", "Resumen"].map((s, i) => (
               <span key={s} className={step === i + 1 ? "current" : ""}>
@@ -163,15 +161,7 @@ export default function Booking({ activity, promos, onClose, onSave }) {
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
                     >
-                      {[
-                        "10:00",
-                        "11:00",
-                        "12:00",
-                        "13:00",
-                        "16:00",
-                        "17:00",
-                        "18:00",
-                      ].map((t) => (
+                      {(activity.times || ["10:00"]).map((t) => (
                         <option key={t}>{t}</option>
                       ))}
                     </select>
@@ -191,21 +181,27 @@ export default function Booking({ activity, promos, onClose, onSave }) {
                   </label>
                 ) : (
                   <label>
-                    Número de motos
+                    Número de{" "}
+                    {activity.unit === "persona"
+                      ? "personas"
+                      : `${activity.unit || "unidad"}s`}
                     <select
                       value={units}
                       onChange={(e) => setUnits(Number(e.target.value))}
                     >
-                      {[1, 2, 3, 4].map((n) => (
+                      {Array.from(
+                        { length: activity.unit === "persona" ? 12 : 4 },
+                        (_, i) => i + (activity.minUnits || 1),
+                      ).map((n) => (
                         <option value={n} key={n}>
-                          {n} {n === 1 ? "moto" : "motos"}
+                          {unitPlural(activity, n)}
                         </option>
                       ))}
                     </select>
                   </label>
                 )}
                 <p className="note">
-                  Horarios de ejemplo. Plazas, capacidad por moto y punto de
+                  Horarios orientativos. Plazas, condiciones y punto de
                   encuentro sujetos a confirmación del operador.
                 </p>
               </>
@@ -269,7 +265,9 @@ export default function Booking({ activity, promos, onClose, onSave }) {
                     {date} · {time}
                   </span>
                   <span>
-                    {group ? `${attendees} asistentes` : `${units} moto(s)`}
+                    {group
+                      ? `${attendees} asistentes`
+                      : unitPlural(activity, units)}
                   </span>
                 </div>
                 <p>
