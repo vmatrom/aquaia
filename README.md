@@ -33,6 +33,10 @@ Primera versión de demostración: reservas, solicitudes y códigos se guardan e
 
 El Dockerfile ejecuta pruebas y build, y sirve archivos estáticos con Nginx. Coolify administra HTTPS y el proxy. Referencia: https://coolify.io/docs/applications/builds/dockerfile
 
+## GitHub Pages
+
+La rama `main` también se publica automáticamente en https://vmatrom.github.io/aquaia/ mediante GitHub Actions. El build usa `/aquaia/` como ruta base sin cambiar la configuración de Coolify.
+
 ## Antes de aceptar reservas reales
 
 Conectar inventario y franjas horarias del operador, backend con validación de precios y promociones, transacciones para aforo y usos de códigos, autenticación administrativa, pagos y confirmaciones. Validar tarifas, puntos de salida, recorridos y condiciones comerciales con el operador. AQUA es una marca de trabajo.

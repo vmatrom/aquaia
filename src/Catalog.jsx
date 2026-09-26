@@ -47,7 +47,7 @@ export default function Catalog({ onBook, onMap }) {
         </div>
         <div className="hero-media">
           <img
-            src="/assets/hero.png"
+            src={`${import.meta.env.BASE_URL}assets/hero.png`}
             alt="Moto de agua sobre el Mediterráneo"
           />
           <button className="map-link" onClick={onMap}>
@@ -86,7 +86,7 @@ export default function Catalog({ onBook, onMap }) {
                 aria-label={`Preparar reserva de ${activity.title}`}
               >
                 <img
-                  src={`/assets/${activity.image === "island" || activity.image === "coast" ? "tabarca" : "hero"}.png`}
+                  src={`${import.meta.env.BASE_URL}assets/${activity.image === "island" || activity.image === "coast" ? "tabarca" : "hero"}.png`}
                   alt="Experiencia acuática en Santa Pola"
                   loading="lazy"
                 />
